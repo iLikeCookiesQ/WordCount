@@ -5,10 +5,11 @@
         public string[] TokenizeLine(string line)
         {
             var onlyLetters = new String(
-                    line
+                    [.. line
                         .Where(c => char.IsLetter(c) || c == ' ')
                         .Select(c => char.ToLower(c))
-                        .ToArray());
+                    ]
+                );
 
             return onlyLetters.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         }
