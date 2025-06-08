@@ -1,0 +1,1 @@
+When running from a shell, the first argument is used as the path to the input file.

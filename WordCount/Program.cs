@@ -6,8 +6,11 @@ namespace WordCount
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-            var lines = File.ReadAllLines("..\\..\\..\\input.txt");
+            var path = args.Length == 0
+                ? "..\\..\\..\\input.txt"
+                : args[0];
+
+            var lines = File.ReadAllLines(path);
 
             var counter = new Counter();
 
