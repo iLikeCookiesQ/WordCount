@@ -8,7 +8,7 @@ namespace WordCount.Tests
 {
     public class CounterTests
     {
-        private Counter _counter = new();
+        private readonly Counter _counter = new();
 
         [Theory]
         [InlineData(0)]
@@ -28,7 +28,7 @@ namespace WordCount.Tests
         }
 
         [Fact]
-        public void CountsAreCorrecltyTrackedPerWord()
+        public void CountsAreCorrectlyTrackedPerWord()
         {
             // Arrange
             var inputs = new List<string> { "one", "two", "two", "three", "three", "three" };
@@ -45,6 +45,26 @@ namespace WordCount.Tests
             Assert.Equal(1, result["one"]);
             Assert.Equal(2, result["two"]);
             Assert.Equal(3, result["three"]);
+        }
+
+        [Fact]
+        public void WordsAreEnumeratedAlphabetically()
+        {
+            // Arrange
+            var inputs = new List<string> { "e", "d", "c", "b", "a" };
+
+            // Act
+            foreach (var input in inputs)
+            {
+                _counter.AddObservation(input);
+            }
+
+            var result = _counter.GetCounts();
+
+            // Assert
+            var expectedOrder = inputs.OrderBy(x => x);
+            var observedOrder = result.Select(kvp => kvp.Key);
+            Assert.Equal(expectedOrder, observedOrder);
         }
     }
 }
