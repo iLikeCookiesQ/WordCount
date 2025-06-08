@@ -2,8 +2,6 @@ namespace WordCount.Tests
 {
     public class TokenizerTests
     {
-        private static readonly Tokenizer _tokenizer = new();
-
         [Fact]
         public void SpecialCharactersAndNumbersAreIgnored()
         {
@@ -11,7 +9,7 @@ namespace WordCount.Tests
             var input = "hi124567890!@#$%^&*()ya";
 
             // Act
-            var result = _tokenizer.TokenizeLine(input);
+            var result = Tokenizer.TokenizeLine(input);
 
             // Assert
             Assert.Equal("hiya", result[0]);
@@ -26,7 +24,7 @@ namespace WordCount.Tests
         public void TheNumberOfWordsInALineIsCorrect(string input, int expectedCount)
         {
             // Act
-            var result = _tokenizer.TokenizeLine(input);
+            var result = Tokenizer.TokenizeLine(input);
 
             // Assert
             Assert.Equal(expectedCount, result.Length);
@@ -39,7 +37,7 @@ namespace WordCount.Tests
             var input = "I think Jack did a better job than John. ";
 
             // Act
-            var result = _tokenizer.TokenizeLine(input);
+            var result = Tokenizer.TokenizeLine(input);
 
             // Assert
             Assert.Equal("i", result[0]);

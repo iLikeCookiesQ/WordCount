@@ -2,7 +2,7 @@
 {
     public class Tokenizer
     {
-        public string[] TokenizeLine(string line)
+        public static string[] TokenizeLine(string line)
         {
             var onlyLetters = new String(
                     [.. line

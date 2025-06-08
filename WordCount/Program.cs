@@ -9,12 +9,11 @@ namespace WordCount
             Console.WriteLine("Hello, World!");
             var lines = File.ReadAllLines("..\\..\\..\\input.txt");
 
-            var tokenizer = new Tokenizer();
             var counter = new Counter();
 
             foreach (var line in lines)
             {
-                var words = tokenizer.TokenizeLine(line);
+                var words = Tokenizer.TokenizeLine(line);
 
                 foreach (var word in words)
                 {
