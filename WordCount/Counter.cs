@@ -2,7 +2,7 @@
 {
     internal class Counter
     {
-        private SortedDictionary<string, int> counts = new();
+        private readonly SortedDictionary<string, int> counts = new();
         public int TotalCount { get; private set; } = 0;
 
         public IReadOnlyDictionary<string, int> GetCounts() => counts;
