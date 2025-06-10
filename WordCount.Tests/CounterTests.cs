@@ -51,7 +51,10 @@ namespace WordCount.Tests
         public void WordsAreEnumeratedAlphabetically()
         {
             // Arrange
-            var inputs = new List<string> { "e", "d", "c", "b", "a" };
+            var inputs = new List<string> { 
+                "e", "d", "c", "b", "a",
+                "aa", "ab", "aaa", "aab"
+            };
 
             // Act
             foreach (var input in inputs)
