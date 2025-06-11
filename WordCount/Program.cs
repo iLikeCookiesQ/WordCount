@@ -10,19 +10,11 @@ namespace WordCount
                 ? "..\\..\\..\\input.txt"
                 : args[0];
 
-            var lines = File.ReadAllLines(path);
-
+            var tokenizer = new Tokenizer();
             var counter = new Counter();
 
-            foreach (var line in lines)
-            {
-                var words = Tokenizer.TokenizeLine(line);
-
-                foreach (var word in words)
-                {
-                    counter.AddObservation(word);
-                }
-            }
+            var streamCounter = new StreamCounter(tokenizer, counter);
+            streamCounter.CountWordsInStream(File.OpenRead(path));
 
             Console.WriteLine("Number of words: " + counter.TotalCount + "\n");
 

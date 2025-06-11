@@ -1,8 +1,10 @@
-﻿namespace WordCount
+﻿using WordCount.Abstractions;
+
+namespace WordCount
 {
-    public class Tokenizer
+    public class Tokenizer : ITokenizer
     {
-        public static string[] TokenizeLine(string line)
+        public string[] TokenizeLine(string line)
         {
             var onlyLetters = new String(
                     [.. line

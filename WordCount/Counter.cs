@@ -1,23 +1,25 @@
-﻿namespace WordCount
+﻿using WordCount.Abstractions;
+
+namespace WordCount
 {
-    public class Counter
+    public class Counter : ICounter
     {
-        private readonly SortedDictionary<string, int> counts = new();
+        private readonly SortedDictionary<string, int> _counts = new();
         public int TotalCount { get; private set; } = 0;
 
-        public IReadOnlyDictionary<string, int> GetCounts() => counts;
+        public IReadOnlyDictionary<string, int> GetCounts() => _counts;
 
         public void AddObservation(string s)
         {
             ++TotalCount;
 
-            if (!counts.ContainsKey(s))
+            if (!_counts.ContainsKey(s))
             {
-                counts[s] = 1;
+                _counts[s] = 1;
             }
             else
             {
-                ++counts[s];
+                ++_counts[s];
             }
         }
     }
