@@ -22,7 +22,7 @@ namespace WordCount
 
         public void CountWordsInStream(Stream stream)
         {
-            using var reader = new StreamReader(stream, leaveOpen: true);
+            using var reader = new StreamReader(stream);
 
             string? line = reader.ReadLine();
 
