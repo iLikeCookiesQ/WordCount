@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace WordCount
+﻿namespace WordCount
 {
     internal class Program
     {
